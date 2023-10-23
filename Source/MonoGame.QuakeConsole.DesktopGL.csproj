@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <DefineConstants>DESKTOPGL</DefineConstants>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -13,12 +13,8 @@
     <Description>Quake-style console allowing for in-game user input.</Description>
     <PackageTags>monogame console shell terminal</PackageTags>
     <RepositoryUrl>https://github.com/discosultan/quake-console</RepositoryUrl>
+	<MonoGamePlatform>DesktopGL</MonoGamePlatform>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
-  </ItemGroup>
 
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.DesktopGL.mgcb" />
@@ -26,6 +22,14 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resource.DesktopGL.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.DesktopGL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

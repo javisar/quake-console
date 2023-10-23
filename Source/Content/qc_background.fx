@@ -1,16 +1,16 @@
 ﻿Texture2D Texture;
 SamplerState TextureSampler;
 
-cbuffer cbPerFrame 
-{
+//cbuffer cbPerFrame 
+//{
 	float4x4 WvpTransform;
 	float4x4 TextureTransform;
 	float4 BackgroundColor;
-};
+//};
 
 struct VertexIn
 {
-	float3 Position : SV_POSITION0;
+	float3 Position : POSITION0;
 	float2 TexCoord : TEXCOORD0;
 };
 
@@ -28,12 +28,12 @@ VertexOut VS(VertexIn vin)
 	vout.TexCoord = mul(float4(vin.TexCoord.x, vin.TexCoord.y, 0.0f, 1.0f), TextureTransform).xy;
 
 	return vout;
-}
+};
 
 float4 PS(VertexOut pin) : SV_TARGET
 {
 	return BackgroundColor * Texture.Sample(TextureSampler, pin.TexCoord);	
-}
+};
 
 technique Main
 {
