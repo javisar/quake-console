@@ -33,7 +33,7 @@ namespace QuakeConsole
             _interpreter = interpreter;
         }
 
-        internal void AddVariable<T>(string name, T obj, int recursionLevel)
+        internal void AddVariable<T>(string name, T obj, Type actualType, int recursionLevel)
         {
             if (name == null)
                 throw new ArgumentNullException(nameof(name));
@@ -43,7 +43,12 @@ namespace QuakeConsole
             if (_interpreter.Instances.ContainsKey(name))
                 throw new InvalidOperationException($"Variable with the name {name} already exists.");
 
-            Type type = typeof(T);
+            Type type;
+            if (actualType == default)
+                type = typeof(T);
+            else
+                type = actualType;
+
             if (!type.IsPublic)
                 throw new InvalidOperationException("Only variables of public type can be added.");
             if (type.DeclaringType != null)
@@ -172,6 +177,7 @@ namespace QuakeConsole
             // That means that we potentially may load a type twice, but this is not an issue - just a very minor perf overhead.
             // Ref: https://github.com/discosultan/quake-console/issues/6
             string sanitizedTypeName = type.Name.TrimEnd(StrippablePythonTypeNameChars);
+            //sanitizedTypeName = sanitizedTypeName.Replace("[]", "");
 
             string script = $"from {type.Namespace} import {sanitizedTypeName}";
             _interpreter.RunScript(script);

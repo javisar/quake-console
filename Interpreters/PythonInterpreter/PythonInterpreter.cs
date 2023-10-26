@@ -112,8 +112,8 @@ namespace QuakeConsole
         /// Determines if subtypes of passed type will also be automatically added to IronPython environment
         /// and if then how many levels deep this applies.
         /// </param>
-        public void AddVariable<T>(string name, T obj, int recursionLevel = DefaultRecursionLevel) =>
-            _typeLoader.AddVariable(name, obj, recursionLevel);
+        public void AddVariable<T>(string name, T obj, Type actualType, int recursionLevel = DefaultRecursionLevel) =>
+            _typeLoader.AddVariable(name, obj, actualType, recursionLevel);
 
         /// <summary>
         /// Removes a variable from the IronPython environment.

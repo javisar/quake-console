@@ -117,7 +117,7 @@ namespace QuakeConsole
             { Keys.OemMinus, new Symbol("-", "_") },
             { Keys.OemPlus, new Symbol("=", "+") },
             { Keys.Decimal, new Symbol(".") },
-            { Keys.Add, new Symbol("+") },
+            { Keys.Add, new Symbol("+","=") },
             { Keys.Subtract, new Symbol("-") },
             { Keys.Multiply, new Symbol("*") },
             { Keys.Divide, new Symbol("/") }
