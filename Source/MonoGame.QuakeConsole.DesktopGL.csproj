@@ -29,6 +29,9 @@
     <PackageReference Include="MonoGame.Content.Builder.Task.Compute" Version="3.8.2" />
   </ItemGroup>
 
+	<PropertyGroup Condition="'$(Configuration)'=='DebugWithContent'">
+		<OutputPath>bin\Debug\</OutputPath>
+	</PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.DesktopGL.csproj" />
   </ItemGroup>
