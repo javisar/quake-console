@@ -105,11 +105,16 @@ namespace QuakeConsole
                 AddTypeImpl(type.GetElementType(), recursionLevel);
                 return false;
             }
-
+            try { 
             // Load type and stop if it is already loaded.
-            if (!LoadTypeInPython(type))
+                if (!LoadTypeInPython(type))
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Warning: Cannot load type "+type);        
                 return false;
-
+            }
             // Add static.
             if (!_interpreter.Statics.ContainsKey(type.Name))
             {
